@@ -1,0 +1,1 @@
+# Kastro_qa_guru_mobile_testing_diplom
