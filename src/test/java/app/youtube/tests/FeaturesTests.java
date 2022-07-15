@@ -17,12 +17,13 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
-@Tag("android")
+
 public class FeaturesTests extends TestBase {
 	private final String SEARCHED_WORD = "Appium";
 
 
 	@Test
+	@Tag("Search")
 	public void searchFeatureTest() {
 		step("Type search", () -> {
 			$(AppiumBy.id("com.google.android.youtube:id/menu_item_1")).shouldBe(enabled, Duration.ofMillis(7000)).click();
@@ -44,6 +45,7 @@ public class FeaturesTests extends TestBase {
 	}
 
 	@Test
+	@Tag("Open")
 	public void openVideoFeatureTest() {
 		final String[] videoTitleFromList = new String[1];
 		final String[] videoTitle = new String[1];
@@ -86,6 +88,7 @@ public class FeaturesTests extends TestBase {
 	}
 
 	@Test
+	@Tag("Notifications")
 	public void checkNotificationsFeatureTest() {
 		step("Check 'Notifications' feature", () -> {
 			$(AppiumBy.id("com.google.android.youtube:id/menu_item_0")).shouldBe(enabled, Duration.ofMillis(8000)).click();

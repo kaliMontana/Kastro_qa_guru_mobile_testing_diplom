@@ -16,22 +16,23 @@ def allureVersion = "2.17.3",
     junitVersion = "5.8.2",
     slf4jVersion = "1.7.32",
     javafakerVersion = "1.0.2",
-    assertjVersion = "3.22.0"
+    assertjVersion = "3.22.0",
+    ownerVersion = "1.0.12"
 
-
-allure {
-    report {
-        version.set(allureVersion)
-    }
-    adapter {
-        aspectjWeaver.set(true)
-        frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
+allure
+        {
+            report {
+                version.set(allureVersion)
+            }
+            adapter {
+                aspectjWeaver.set(true)
+                frameworks {
+                    junit5 {
+                        adapterVersion.set(allureVersion)
+                    }
+                }
             }
         }
-    }
-}
 
 dependencies {
     testImplementation(
@@ -43,7 +44,8 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
             "com.github.javafaker:javafaker:$javafakerVersion",
-            "org.assertj:assertj-core:$assertjVersion"
+            "org.assertj:assertj-core:$assertjVersion",
+            "org.aeonbits.owner:owner:$ownerVersion"
     )
 }
 
@@ -53,18 +55,23 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     systemProperties(System.getProperties())
-    useJUnitPlatform()
+
+    useJUnitPlatform() {
+        if (System.getProperty("testTag").equals("Search")) {
+            includeTags "Search"
+        } else if (System.getProperty("testTag").equals("Open")) {
+            includeTags "Open"
+        } else if (System.getProperty("testTag").equals("Notifications")) {
+            includeTags "Notifications"
+        } else if (System.getProperty("testTag").equals("AllTests")) {
+            includeTags("Search", "Open", "Notifications")
+        }
+    }
 
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-task android(type: Test) {
-    useJUnitPlatform {
-        includeTags 'android'
     }
 }
