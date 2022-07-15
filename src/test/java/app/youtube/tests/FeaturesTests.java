@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,7 @@ public class FeaturesTests extends TestBase {
 
 	@Test
 	@Tag("Search")
+	@DisplayName("Search world")
 	public void searchFeatureTest() {
 		step("Type search", () -> {
 			searchIconElement.shouldBe(enabled, Duration.ofSeconds(SEVEN_SEC.getValue())).click();
@@ -44,6 +46,7 @@ public class FeaturesTests extends TestBase {
 	}
 
 	@Test
+	@DisplayName("Open video")
 	@Tag("Open")
 	public void openVideoFeatureTest() {
 		final String[] videoTitleFromList = new String[1];
@@ -92,6 +95,7 @@ public class FeaturesTests extends TestBase {
 	}
 
 	@Test
+	@DisplayName("Check Notifications")
 	@Tag("Notifications")
 	public void checkNotificationsFeatureTest() {
 		step("Check 'Notifications' feature", () -> {
