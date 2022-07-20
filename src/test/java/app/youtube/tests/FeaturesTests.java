@@ -2,6 +2,9 @@ package app.youtube.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,12 +20,16 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
+@Tag("AllTests")
+@Owner("Kastro B.")
+@Story("Youtube features")
 public class FeaturesTests extends TestBase {
 
 
 	@Test
 	@Tag("Search")
-	@DisplayName("Search world")
+	@Feature("Search")
+	@DisplayName("Check search a video")
 	public void searchFeatureTest() {
 		step("Type search", () -> {
 			searchIconElement.shouldBe(enabled, Duration.ofSeconds(SEVEN_SEC.getValue())).click();
@@ -46,8 +53,9 @@ public class FeaturesTests extends TestBase {
 	}
 
 	@Test
-	@DisplayName("Open video")
 	@Tag("Open")
+	@Feature("Open video")
+	@DisplayName("Check open video")
 	public void openVideoFeatureTest() {
 		final String[] videoTitleFromList = new String[1];
 		final String[] videoTitle = new String[1];
@@ -89,14 +97,15 @@ public class FeaturesTests extends TestBase {
 
 		step("Compare the titles between the clicked and opened videos", () -> {
 			Assertions.assertThat(videoTitleFromList[0])
-					.as("Video's Title not are the same")
+					.as("Video's Titles not are the same")
 					.contains(videoTitle[0]);
 		});
 	}
 
 	@Test
-	@DisplayName("Check Notifications")
 	@Tag("Notifications")
+	@Feature("Notifications")
+	@DisplayName("Check notifications")
 	public void checkNotificationsFeatureTest() {
 		step("Check 'Notifications' feature", () -> {
 			notificationIconElement.shouldBe(enabled, Duration.ofSeconds(EIGHT_SEC.getValue())).click();

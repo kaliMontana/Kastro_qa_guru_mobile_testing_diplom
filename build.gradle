@@ -68,7 +68,7 @@ tasks.withType(Test) {
         } else if (System.getProperty("testTag").equals("Notifications")) {
             includeTags "Notifications"
         } else if (System.getProperty("testTag").equals("AllTests")) {
-            includeTags("Search", "Open", "Notifications")
+            includeTags "AllTests"
         }
     }
 
