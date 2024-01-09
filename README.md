@@ -1,4 +1,5 @@
 # Kastro_qa_guru_mobile_testing_diplom
+Note: This test suite works for physical telephone Samsung A10
 
 Command to test start:
 gradle clean test -DtestTag=Search
