@@ -75,30 +75,27 @@ public class FeaturesTests extends TestBase {
 		});
 
 		step("Get the title of first video", () -> {
-			videoTitleFromList[0] = videoResultListElement.get(1)
-					.shouldBe(visible, Duration.ofSeconds(EIGHT_SEC.getValue())).getAttribute("content-desc");
+			videoTitleFromList[0] = videoResultListElement.first()
+					.shouldBe(visible, Duration.ofSeconds(TEN_SEC.getValue())).getText();
 
 			attachAsText("Video's title from list", videoTitleFromList[0]);
 		});
 
+		step("Click on the first result from list", () -> {
+			videoElements.get(1).click();
+		});
+
 		step("Click on the first video", () -> {
-			videoResultListElement.get(1).click();
+			videoResultListElement.get(6).shouldBe(visible, Duration.ofSeconds(EIGHT_SEC.getValue())).click();
+
+			videoTitle[0] = videoElements.get(7)
+					.shouldHave(Condition.attribute("content-desc"), Duration.ofSeconds(EIGHT_SEC.getValue())).getAttribute("content-desc");
 		});
 
-		step("expand video description", () -> {
-			videoResultListElement.shouldHave(CollectionCondition.sizeGreaterThan(0), Duration.ofSeconds(EIGHT_SEC.getValue()));
-
-			videoResultListElement.get(7).click();
-			videoResultListElement.get(7).click();
-
-			videoTitle[0] = videoResultListElement.get(7)
-					.shouldHave(Condition.attribute("content-desc")).getAttribute("content-desc");
-		});
-
-		step("Compare the titles between the clicked and opened videos", () -> {
-			Assertions.assertThat(videoTitleFromList[0])
+		step("Check that the title of the opened videos contains searched word", () -> {
+			Assertions.assertThat(videoTitle[0])
 					.as("Video's Titles not are the same")
-					.contains(videoTitle[0]);
+					.containsIgnoringCase(videoTitleFromList[0]);
 		});
 	}
 

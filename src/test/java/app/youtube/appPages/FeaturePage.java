@@ -12,7 +12,8 @@ public class FeaturePage {
 	public static SelenideElement searchEditTextElement = $(AppiumBy.id("com.google.android.youtube:id/search_edit_text"));
 	public static ElementsCollection videoListElement = $$(AppiumBy.id("com.google.android.youtube:id/text"));
 
-	public static ElementsCollection videoResultListElement = $$(AppiumBy.className("android.view.ViewGroup"));
+	public static ElementsCollection videoElements = $$(AppiumBy.className("android.view.ViewGroup"));
+	public static ElementsCollection videoResultListElement = $$(AppiumBy.className("android.widget.TextView"));
 
 	public static SelenideElement notificationIconElement = $(AppiumBy.id("com.google.android.youtube:id/menu_item_0"));
 	public static SelenideElement titleLabelElement = $(AppiumBy.className("android.widget.TextView"));
