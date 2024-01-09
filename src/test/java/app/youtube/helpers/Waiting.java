@@ -14,6 +14,9 @@ public enum Waiting {
 	),
 	EIGHT_SEC(
 			8
+	),
+	TEN_SEC(
+			10
 	);
 
 	private final long value;
