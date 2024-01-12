@@ -50,4 +50,16 @@ After the run is completed, notifications are sent using the bot in Telegram.
 ## Implemented tests
 - [x] Testing the Search functionality and checking for existence of results
 - [x] Testing the Open video functionality and checking if the videos contain the researched word
-- [x] Testing the Notifications functionality 
+- [x] Testing the Notifications functionality
+
+## Starting test
+<details>
+<summary>Starting test from Idea console</summary>
+
+### Starting tests Locally
+
+* ```gradle clean test -DtestTag=${TAGTEST} allureServe```
+* ```gradle clean test -DtestTag=Search```
+* ```gradle clean test -DtestTag=AllTests allureServe```
+</details>
+
