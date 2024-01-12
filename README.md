@@ -30,3 +30,24 @@ gradle clean test -DtestTag=AllTests allureServe
 <img width="6%" src="images/logos/Allure_Report.svg">
 <img width="6%" src="images/logos/Telegram.svg">
 </p>
+
+In this project, autotests are written in Java using Appium and Selenide.
+
+JUnit 5 is used as a unit testing library.
+
+Gradle is used to build the project automatically.
+
+Selenide is used instead appium for interaction with app.
+
+Selenoid launches browsers in Docker containers.
+
+Allure Report generates a test run report.
+
+Jenkins is running tests.
+
+After the run is completed, notifications are sent using the bot in Telegram.
+
+## Implemented tests
+- [x] Testing the Search functionality and checking for existence of results
+- [x] Testing the Open video functionality and checking if the videos contain the researched word
+- [x] Testing the Notifications functionality 
