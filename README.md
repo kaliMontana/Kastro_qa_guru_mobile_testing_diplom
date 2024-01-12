@@ -63,3 +63,13 @@ After the run is completed, notifications are sent using the bot in Telegram.
 * ```gradle clean test -DtestTag=AllTests allureServe```
 </details>
 
+#### After passing the tests, the result is displayed in Allure Report
+
+## <img width="6%" title="Allure" src="images/logos/Allure_Report.svg"> Example of Allure Report
+
+## Allure report for each UI test includes a screenshot and log
+
+<p><img src="images/screenshots/allure_report.png" alt="allure report"/></p>
+
+### Please don't forget click on Star button ;)
+
