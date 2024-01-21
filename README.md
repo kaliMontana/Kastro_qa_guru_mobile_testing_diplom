@@ -1,12 +1,3 @@
-# Kastro_qa_guru_mobile_testing_diplom
-Note: This test suite works for physical telephone Samsung A10
-
-Command to test start:
-gradle clean test -DtestTag=Search
-gradle clean test -DtestTag=Open
-gradle clean test -DtestTag=Notifications
-gradle clean test -DtestTag=AllTests allureServe
-
 # Project to automate testing the app youtube in a physical telephone Samsung A10
 
 ## Content
@@ -59,8 +50,10 @@ After the run is completed, notifications are sent using the bot in Telegram.
 ### Starting tests Locally
 
 * ```gradle clean test -DtestTag=${TAGTEST} allureServe```
-* ```gradle clean test -DtestTag=Search```
-* ```gradle clean test -DtestTag=AllTests allureServe```
+* ```gradle clean test -DtestTag=Search allureServe```
+* ```gradle clean test -DtestTag=Open allureServe```
+* ```gradle clean test -DtestTag=Notifications allureServe```
+* ```gradle clean test allureServe```
 </details>
 
 #### After passing the tests, the result is displayed in Allure Report
