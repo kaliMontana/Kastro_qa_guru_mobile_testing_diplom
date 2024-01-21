@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
-@Tag("AllTests")
 @Owner("Kastro B.")
 @Story("Youtube features")
 public class FeaturesTests extends TestBase {
