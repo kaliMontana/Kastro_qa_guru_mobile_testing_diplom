@@ -13,7 +13,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
-import static app.youtube.appPages.FeaturePage.*;
+import static app.youtube.appPages.NotificationPage.notificationIconElement;
+import static app.youtube.appPages.NotificationPage.titleLabelElement;
+import static app.youtube.appPages.ResultPage.videoElements;
+import static app.youtube.appPages.ResultPage.videoResultListElement;
+import static app.youtube.appPages.SearchPage.*;
+import static app.youtube.dataProviders.SearchedWords.NOTIFICATION_TITLE;
+import static app.youtube.dataProviders.SearchedWords.SEARCHED_WORD;
 import static app.youtube.helpers.Attach.attachAsText;
 import static app.youtube.helpers.Waiting.*;
 import static com.codeborne.selenide.Condition.enabled;
@@ -33,7 +39,7 @@ public class FeaturesTests extends TestBase {
 		step("Type search", () -> {
 			searchIconElement.shouldBe(enabled, Duration.ofSeconds(SEVEN_SEC.getValue())).click();
 
-			searchEditTextElement.sendKeys(SEARCHED_WORD);
+			searchEditTextElement.sendKeys(SEARCHED_WORD.getValue());
 		});
 
 		step("Verify the found result's quantity", () ->
@@ -45,7 +51,7 @@ public class FeaturesTests extends TestBase {
 
 			videoListElement.forEach(x -> softAssertions.assertThat(x.getText())
 					.as("Result element does not contains searched word")
-					.containsIgnoringCase(SEARCHED_WORD));
+					.containsIgnoringCase(SEARCHED_WORD.getValue()));
 
 			softAssertions.assertAll();
 		});
@@ -62,7 +68,7 @@ public class FeaturesTests extends TestBase {
 		step("Type search", () -> {
 			searchIconElement.shouldBe(enabled, Duration.ofSeconds(SEVEN_SEC.getValue())).click();
 
-			searchEditTextElement.sendKeys(SEARCHED_WORD);
+			searchEditTextElement.sendKeys(SEARCHED_WORD.getValue());
 		});
 
 		step("Click on the first result", () -> {
@@ -106,7 +112,7 @@ public class FeaturesTests extends TestBase {
 		step("Check 'Notifications' feature", () -> {
 			notificationIconElement.shouldBe(enabled, Duration.ofSeconds(EIGHT_SEC.getValue())).click();
 
-			titleLabelElement.shouldBe(enabled, Duration.ofSeconds(EIGHT_SEC.getValue())).shouldHave(Condition.text(NOTIFICATION_TITLE));
+			titleLabelElement.shouldBe(enabled, Duration.ofSeconds(EIGHT_SEC.getValue())).shouldHave(Condition.text(NOTIFICATION_TITLE.getValue()));
 			videoResultListElement.shouldHave(CollectionCondition.sizeGreaterThan(0));
 		});
 	}
